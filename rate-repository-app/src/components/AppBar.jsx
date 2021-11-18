@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, StyleSheet, Text, Pressable } from 'react-native'
+import { View, StyleSheet, Text, ScrollView } from 'react-native'
 import Constants from 'expo-constants'
 import theme from '../theme'
+import { Link } from 'react-router-native'
 
 const styles = StyleSheet.create({
   container: {
@@ -11,19 +12,23 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontWeight: theme.fontWeights.bold,
+    marginRight: 15,
   },
 })
 
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <Pressable
-        onPress={() => {
-          console.log('click click')
-        }}
-      >
-        <Text style={styles.text}>Repositories</Text>
-      </Pressable>
+      <ScrollView horizontal>
+        <Text>
+          <Link to='/'>
+            <Text style={styles.text}>Repositories</Text>
+          </Link>
+          <Link to='/signin'>
+            <Text style={styles.text}>Sign in</Text>
+          </Link>
+        </Text>
+      </ScrollView>
     </View>
   )
 }
